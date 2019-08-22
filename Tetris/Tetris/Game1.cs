@@ -13,6 +13,7 @@ namespace Tetris
         SpriteBatch spriteBatch;
 
         private Table table;
+        private Tetromino actualTetromino;
 
         public Game1()
         {
@@ -45,6 +46,7 @@ namespace Tetris
             // TODO: use this.Content to load your game content here
             Texture2D squares = Content.Load<Texture2D>("squares");
             table = new Table(20, 20, squares);
+            actualTetromino = new Tetromino();
         }
 
         /// <summary>

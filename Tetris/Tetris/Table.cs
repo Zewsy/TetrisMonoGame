@@ -41,28 +41,28 @@ namespace Tetris
                 {
                     switch (element)
                     {
-                        case TetroColor.BLUE:
+                        case (int)TetroColor.BLUE:
                             spriteBatch.Draw(squares, destination, new Rectangle(0, 0, squareWidth, squareHeight), Color.White);
                             break;
-                        case TetroColor.GREEN:
+                        case (int)TetroColor.GREEN:
                             spriteBatch.Draw(squares, destination, new Rectangle(squareWidth, 0, squareWidth, squareHeight), Color.White);
                             break;
-                        case TetroColor.PINK:
+                        case (int)TetroColor.PINK:
                             spriteBatch.Draw(squares, destination, new Rectangle(2 * squareWidth, 0, squareWidth, squareHeight), Color.White);
                             break;
-                        case TetroColor.PURPLE:
+                        case (int)TetroColor.PURPLE:
                             spriteBatch.Draw(squares, destination, new Rectangle(3 * squareWidth, 0, squareWidth, squareHeight), Color.White);
                             break;
-                        case TetroColor.RAINBOW:
+                        case (int)TetroColor.RAINBOW:
                             spriteBatch.Draw(squares, destination, new Rectangle(0, squareHeight, squareWidth, squareHeight), Color.White);
                             break;
-                        case TetroColor.RED:
+                        case (int)TetroColor.RED:
                             spriteBatch.Draw(squares, destination, new Rectangle(squareWidth, squareHeight, squareWidth, squareHeight), Color.White);
                             break;
-                        case TetroColor.YELLOW:
+                        case (int)TetroColor.YELLOW:
                             spriteBatch.Draw(squares, destination, new Rectangle(2 * squareWidth, squareHeight, squareWidth, squareHeight), Color.White);
                             break;
-                        case TetroColor.GREY:
+                        case (int)TetroColor.GREY:
                             spriteBatch.Draw(squares, destination, new Rectangle(3 * squareWidth, squareHeight, squareWidth, squareHeight), Color.White);
                             break;
                     }
@@ -72,6 +72,11 @@ namespace Tetris
                 destination.Y += squareHeight;
             }
             spriteBatch.End();
+        }
+
+        public void Update()
+        {
+
         }
     }
 }
