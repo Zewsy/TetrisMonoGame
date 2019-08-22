@@ -15,6 +15,8 @@ namespace Tetris
         private Table table;
         private Tetromino actualTetromino;
 
+        private double timeElapsedSinceLastFall = 0;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -46,7 +48,7 @@ namespace Tetris
             // TODO: use this.Content to load your game content here
             Texture2D squares = Content.Load<Texture2D>("squares");
             table = new Table(20, 20, squares);
-            actualTetromino = new Tetromino();
+            actualTetromino = new Tetromino(table);
         }
 
         /// <summary>
@@ -66,7 +68,15 @@ namespace Tetris
         protected override void Update(GameTime gameTime)
         {
             // TODO: Add your update logic here
-
+            table.Clear();
+            actualTetromino.AddOnTable();
+            timeElapsedSinceLastFall += gameTime.ElapsedGameTime.TotalMilliseconds;
+            if(timeElapsedSinceLastFall >= 1000)
+            {
+                timeElapsedSinceLastFall = 0;
+                actualTetromino.Fall();
+            }
+            
             base.Update(gameTime);
         }
 

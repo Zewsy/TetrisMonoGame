@@ -8,15 +8,17 @@ using System.Threading.Tasks;
 
 namespace Tetris
 {
-    class Table
+    public class Table
     {
-        private int[][] data;
+        public int[][] data { get; set; }
         private  Texture2D squares { get; set; }
 
         private const int squaresColumns = 4;
         private const int squaresRows = 2;
         private int squareWidth;
         private int squareHeight;
+        private int height;
+        private int width;
 
         public Table(int height, int width, Texture2D _squares)
         {
@@ -29,6 +31,8 @@ namespace Tetris
             squares = _squares;
             squareWidth = squares.Width / squaresColumns;
             squareHeight = squares.Height / squaresRows;
+            this.height = height;
+            this.width = width;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -77,6 +81,17 @@ namespace Tetris
         public void Update()
         {
 
+        }
+
+        public void Clear()
+        {
+            for(int i = 0; i < height; i++)
+            {
+                for(int j = 0; j < width; j++)
+                {
+                    data[i][j] = 0;
+                }
+            }
         }
     }
 }

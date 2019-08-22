@@ -3,22 +3,25 @@
 namespace Tetris
 {
     public enum TetroLook { I, L, O, T, Z };
-    public enum TetroColor { BLUE, GREEN, PINK, PURPLE, RAINBOW, RED, YELLOW, GREY };
+    public enum TetroColor { EMPTY, BLUE, GREEN, PINK, PURPLE, RAINBOW, RED, YELLOW, GREY };
     public class Tetromino
     {
         private const int looksNumber = 4;
         private const int colorsNumber = 8;
 
+        //Top-left corner
+        private int column;
+        private int row;
+
         private int[][] data = new int[3][];
+        private Table table;
 
-        public Tetromino(TetroLook look, int color)
+        public Tetromino(Table table)
         {
-            fillData(look, color);
-        }
-
-        public Tetromino()
-        {
+            this.table = table;
             fillData(generateRandomLook(), (int)generateRandomColor());
+            column = table.data[0].Length / 2 - 1;
+            row = -2;
         }
 
         public void fillData(TetroLook look, int color)
@@ -52,6 +55,20 @@ namespace Tetris
                     break;
             }
         }
+
+        public void AddOnTable()
+        {
+            for(int i1 = row, i2 = 0; i1 < row + 3; i1++)
+            {
+                if (i1 < 0)     //If we don't add the entire tetromino on the table
+                    continue;
+                for(int j1 = column, j2 = 0; j1 < column + 3; j1++, j2++)
+                {
+                    table.data[i1][j1] = data[i2][j2];
+                }
+                i2++;
+            }
+        }
         public static TetroLook generateRandomLook()
         {
             Random rand = new Random();
@@ -63,9 +80,24 @@ namespace Tetris
         public static TetroColor generateRandomColor()
         {
             Random rand = new Random();
-            int number = rand.Next(colorsNumber);
+            int number = rand.Next(colorsNumber) + 1;   //+1 because of EMPTY "color"
 
             return (TetroColor)number;
+        }
+
+        public void Fall()
+        {
+            row++;
+        }
+
+        public void MoveLeft()
+        {
+            column--;
+        }
+
+        public void MoveRight()
+        {
+            column++;
         }
     }
 }
