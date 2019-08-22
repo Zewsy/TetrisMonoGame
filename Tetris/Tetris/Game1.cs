@@ -12,6 +12,8 @@ namespace Tetris
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        private Table table;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -41,6 +43,8 @@ namespace Tetris
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            Texture2D squares = Content.Load<Texture2D>("squares");
+            table = new Table(20, 20, squares);
         }
 
         /// <summary>
@@ -59,9 +63,6 @@ namespace Tetris
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -73,9 +74,10 @@ namespace Tetris
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
+            table.Draw(spriteBatch);
 
             base.Draw(gameTime);
         }
