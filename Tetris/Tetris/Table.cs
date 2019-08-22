@@ -10,16 +10,6 @@ namespace Tetris
 {
     class Table
     {
-        //Temporary place
-        private const int BLUE = 1;
-        private const int GREEN = 2;
-        private const int PINK = 3;
-        private const int PURPLE = 4;
-        private const int RAINBOW = 5;
-        private const int RED = 6;
-        private const int YELLOW = 7;
-        private const int GREY = 8;
-
         private int[][] data;
         private  Texture2D squares { get; set; }
 
@@ -51,28 +41,28 @@ namespace Tetris
                 {
                     switch (element)
                     {
-                        case BLUE:
+                        case TetroColor.BLUE:
                             spriteBatch.Draw(squares, destination, new Rectangle(0, 0, squareWidth, squareHeight), Color.White);
                             break;
-                        case GREEN:
+                        case TetroColor.GREEN:
                             spriteBatch.Draw(squares, destination, new Rectangle(squareWidth, 0, squareWidth, squareHeight), Color.White);
                             break;
-                        case PINK:
+                        case TetroColor.PINK:
                             spriteBatch.Draw(squares, destination, new Rectangle(2 * squareWidth, 0, squareWidth, squareHeight), Color.White);
                             break;
-                        case PURPLE:
+                        case TetroColor.PURPLE:
                             spriteBatch.Draw(squares, destination, new Rectangle(3 * squareWidth, 0, squareWidth, squareHeight), Color.White);
                             break;
-                        case RAINBOW:
+                        case TetroColor.RAINBOW:
                             spriteBatch.Draw(squares, destination, new Rectangle(0, squareHeight, squareWidth, squareHeight), Color.White);
                             break;
-                        case RED:
+                        case TetroColor.RED:
                             spriteBatch.Draw(squares, destination, new Rectangle(squareWidth, squareHeight, squareWidth, squareHeight), Color.White);
                             break;
-                        case YELLOW:
+                        case TetroColor.YELLOW:
                             spriteBatch.Draw(squares, destination, new Rectangle(2 * squareWidth, squareHeight, squareWidth, squareHeight), Color.White);
                             break;
-                        case GREY:
+                        case TetroColor.GREY:
                             spriteBatch.Draw(squares, destination, new Rectangle(3 * squareWidth, squareHeight, squareWidth, squareHeight), Color.White);
                             break;
                     }
